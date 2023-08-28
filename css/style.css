@@ -22,8 +22,6 @@ body {
     overflow: hidden;
 }
 
-
-
 /* Card da cor de fundo atrás do calendário */
 .container {
     position: relative;
@@ -75,6 +73,25 @@ body {
     height: 94%;
     left: calc(100% + 12px);
     background-color: #999999;
+}
+
+.container a{
+    display: contents;
+}
+
+.calendar .logo {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: -40px;
+    display: block;
+    transition: 0.4s ease-in-out;
+}
+
+.container .logo:hover {
+    filter: invert();
+    transform: rotate(-180deg);
 }
 
 /* Meses do calendário */
