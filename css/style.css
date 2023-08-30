@@ -600,14 +600,14 @@ body {
 }
 .add-event-wrapper {
     bottom: 100px;
-
 }
+
 }
 
 @media screen and (max-width: 500px) {
 
 .calendar .logo {
-    top: 15%;
+    top: 16.5%;
     width: 30px;
 }
 
@@ -633,7 +633,41 @@ body {
     padding: 20px;
 }
 
+.add-event {
+    position: fixed;
+    left: 48%;
+    top: 58.5%;
 }
+
+.add-event-body {
+    height: 65%;
+}
+
+.add-event-footer {
+    height: 10%;
+}
+
+.add-event .add-event-btn {
+    position: absolute;
+    left: 50%;
+    top: -30%;
+    transform: translate(-50%, -50%);
+}
+
+.add-event-wrapper { 
+    position: absolute;
+    left: 50%;
+    top: -30%;
+    transform: translate(-50%, -50%);
+}
+
+.add-event-wrapper.active {
+    box-shadow: 5px 0 30px 2px #000;
+}
+
+}
+
+
 
 .made a {
     position: absolute;

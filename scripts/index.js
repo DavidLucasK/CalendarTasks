@@ -233,7 +233,7 @@ const addEventBtn = document.querySelector(".add-event"),
     addEventTo = document.querySelector(".event-time-to");
 
     //Adiciona a classe de active
-    addEventBtn.addEventListener("click", () => {
+    addEventBtn.addEventListener("click" || "touch", () => {
         addEventContainer.classList.toggle("active");
     });
     
@@ -242,12 +242,12 @@ const addEventBtn = document.querySelector(".add-event"),
     addEventContainer.classList.remove("active");
     });
 
-    document.addEventListener("click", (e) => {
-    //Se o usuário clicar fora do card de Evento ele fecha automaticamente
-    if (e.target !== addEventBtn && !addEventContainer.contains(e.target)) {
-        addEventContainer.classList.remove("active");
-    }
-});
+//     document.addEventListener("click", (e) => {
+//     //Se o usuário clicar fora do card de Evento ele fecha automaticamente
+//     if (e.target !== addEventBtn && !addEventContainer.contains(e.target)) {
+//         addEventContainer.classList.remove("active");
+//     }
+// });
 
 //Permite só 50 caracteres no titulo do evento
 addEventTitle.addEventListener("input", (e) => {
