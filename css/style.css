@@ -720,6 +720,12 @@ body {
     z-index: 1;
 }
 
+.made a {
+    position: fixed;
+    top: 0;
+    left: 32%;
+    max-width: 200px;
+    max-height: 20px;
 }
 
 @keyframes gradient {
