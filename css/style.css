@@ -80,18 +80,16 @@ body {
 }
 
 .calendar .logo {
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: -40px;
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: block;
-    transition: 0.4s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
 .container .logo:hover {
     filter: invert();
-    transform: rotate(-180deg);
 }
 
 /* Meses do calendário */
@@ -607,6 +605,12 @@ body {
 }
 
 @media screen and (max-width: 500px) {
+
+.calendar .logo {
+    top: 15%;
+    width: 30px;
+}
+
 .calendar .month {
     height: 75px;
 }
