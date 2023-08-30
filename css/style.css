@@ -553,6 +553,20 @@ body {
     opacity: 1;
 }
 
+.made a {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #FFF;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.01;
+}
+
+.made a:hover {
+    opacity: 1;
+}
+
 /* media queries */
 
 @media screen and (max-width: 1000px) {
@@ -604,6 +618,28 @@ body {
 
 }
 
+@media screen and (min-width: 501px) and (max-width: 999px) {
+    .container {
+        flex-direction: row;
+        min-height: 100vh;
+        padding: 10px;
+    }
+
+    .right .today-date {
+        position: relative;
+        bottom: 50px;
+    }
+    
+    .container .left {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .container .right {
+        width: 100%;
+        height: 100%;
+    }
+}
 @media screen and (max-width: 500px) {
 
 .calendar .logo {
@@ -633,10 +669,27 @@ body {
     padding: 20px;
 }
 
+.right {
+    min-height: 100%;
+    max-height: 44vh;
+}
+
+.events {
+    width: 100%;
+    height: 100%;
+    max-height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 4px;
+}
+
 .add-event {
-    position: fixed;
-    left: 48%;
-    top: 58.5%;
+    max-height: 50px;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
 }
 
 .add-event-body {
@@ -654,7 +707,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.add-event-wrapper { 
+.add-event-wrapper {
     position: absolute;
     left: 50%;
     top: -30%;
@@ -662,25 +715,11 @@ body {
 }
 
 .add-event-wrapper.active {
+    display: block;
     box-shadow: 5px 0 30px 2px #000;
+    z-index: 1;
 }
 
-}
-
-
-
-.made a {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    color: #FFF;
-    text-decoration: none;
-    cursor: pointer;
-    opacity: 0.01;
-}
-
-.made a:hover {
-    opacity: 1;
 }
 
 @keyframes gradient {
