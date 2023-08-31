@@ -7,6 +7,9 @@
     <!-- Arquivo CSS -->
     <link rel="stylesheet" href="css/style.css">
 
+    <!-- Favicon page -->
+    <link rel="shortcut icon" href="assets/Logo-rounded.png" type="image/x-icon">
+
     <!-- Icons Font-awesome cdnjs -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
@@ -28,13 +31,13 @@
                     <i class="fa fa-angle-right next"></i>
                 </div>
                 <div class="weekdays">
-                    <div>dom</div>
-                    <div>seg</div>
-                    <div>ter</div>
-                    <div>qua</div>
-                    <div>qui</div>
-                    <div>sex</div>
-                    <div>sáb</div>
+                    <div class="dom"></div>
+                    <div class="seg"></div>
+                    <div class="ter"></div>
+                    <div class="qua"></div>
+                    <div class="qui"></div>
+                    <div class="sex"></div>
+                    <div class="sáb"></div>
                 </div>
                 <div class="days"></div>
                 <div class="goto-today">
@@ -42,7 +45,7 @@
                       <input type="text" placeholder="MM/YYYY" class="date-input" />
                       <button class="goto-btn">Ir</button>
                     </div>
-                    <button class="today-btn">Hoje</button>
+                    <button class="today-btn"></button>
                 </div>
             </div>
         </div>
@@ -55,22 +58,22 @@
             </div>
             <div class="add-event-wrapper">
                 <div class="add-event-header">
-                    <div class="title">Adicionar Evento</div>
+                    <div class="title"></div>
                     <i class="fas fa-times close"></i>
                 </div>
                 <div class="add-event-body">
                     <div class="add-event-input">
-                        <input type="text" placeholder="Evento" class="event-name" />
+                        <input type="text" placeholder="Evento" class="event-name" name="event-name" />
                     </div>
                     <div class="add-event-input">
-                        <input type="text" placeholder="De" class="event-time-from" />
+                        <input type="text" placeholder="De" class="event-time-from" name="event-time-from" />
                     </div>
                     <div class="add-event-input">
-                        <input type="text" placeholder="Até" class="event-time-to" />
+                        <input type="text" placeholder="Até" class="event-time-to" name="event-time-to" />
                     </div>
                 </div>
                 <div class="add-event-footer">
-                    <button class="add-event-btn">Criar Evento</button>
+                    <button class="add-event-btn"></button>
                 </div>
             </div>
             <button class="add-event">

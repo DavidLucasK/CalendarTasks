@@ -86,10 +86,11 @@ body {
     transform: translate(-50%, -50%);
     display: block;
     transition: 0.5s ease-in-out;
+    filter: invert();
 }
 
 .container .logo:hover {
-    filter: invert();
+    filter: invert(0);
 }
 
 /* Meses do calendário */
@@ -640,6 +641,7 @@ body {
         height: 100%;
     }
 }
+
 @media screen and (max-width: 500px) {
 
 .calendar .logo {
@@ -726,6 +728,8 @@ body {
     left: 32%;
     max-width: 200px;
     max-height: 20px;
+}
+
 }
 
 @keyframes gradient {

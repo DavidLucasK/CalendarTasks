@@ -12,7 +12,19 @@ const calendar = document.querySelector(".calendar"),
     eventTitle = document.querySelector(".event-name "),
     eventFrom = document.querySelector(".event-time-from"),
     eventTo = document.querySelector(".event-time-to "),
-    addEventSubmit = document.querySelector(".add-event-btn ");
+    addEventSubmit = document.querySelector(".add-event-btn "),
+    createEventTitle = document.querySelector(".title "),
+    language = window.navigator.language,
+
+    //Variáveis de dias da semana do calendário
+
+    Dom = document.querySelector(".dom"),
+    Seg = document.querySelector(".seg"),
+    Ter = document.querySelector(".ter"),
+    Qua = document.querySelector(".qua"),
+    Qui = document.querySelector(".qui"),
+    Sex = document.querySelector(".sex"),
+    Sab = document.querySelector(".sáb");
 
 
 let today = new Date();
@@ -35,33 +47,35 @@ const months = [
     "Dezembro"
 ];
 
-var dias = [
-    "Domingo", 
-    "Segunda", 
-    "Terça", 
-    "Quarta", 
-    "Quinta", 
-    "Sexta", 
-    "Sábado"
+const monthsUs = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
 ];
 
-// const eventsArr = [
-//   {
-//     day: 15,
-//     month: 8,
-//     year: 2023,
-//     events: [
-//       {
-//         title: "Event 1 lorem ipsun dolar sit genfa tersd dsad ",
-//         time: "10:00 AM",
-//       },
-//       {
-//         title: "Event 2",
-//         time: "11:00 AM",
-//       },
-//     ],
-//   },
-// ];
+var horas = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12"
+];
 
 //Cria um array vazio
 let eventsArr = [];
@@ -82,7 +96,11 @@ function initCalendar() {
     const nextDays = 7 - lastDay.getDay() - 1;
 
     // Atualiza data no topo do calendário
-    date.innerHTML = months[month] + " " + year;
+    if (language === "pt-BR") {
+        date.innerHTML = months[month] + " " + year;
+    } else {
+        date.innerHTML = monthsUs[month] + " " + year;
+    }
 
     // Adicionando os dias no calendário
     let days = "";
@@ -186,6 +204,13 @@ todayBtn.addEventListener("click", () => {
     initCalendar();
 });
 
+if (language === "pt-BR") {
+    todayBtn.innerHTML = "Hoje";
+} else {
+    todayBtn.innerHTML = "Today";
+}
+
+
 dateInput.addEventListener("input", (e) => {
     //Essa linha permite somente números e remove qualquer outra coisa
     dateInput.value = dateInput.value.replace(/[^0-9/]/g, "");
@@ -222,7 +247,11 @@ dateInput.addEventListener("input", (e) => {
         }
     }
     //Se a data for inválida
-    alert("Data Inválida" + "\n" + "Digite Mês/Ano" + "\n" + "Exemplo: 02/2023");
+    if (language == "pt-BR") {
+        alert("Data Inválida" + "\n" + "Digite Mês/Ano" + "\n" + "Exemplo: 02/2023");
+    } {
+        alert("Invalid date" + "\n" + "Type Month/Year" + "\n" + "Example: 02/2023");
+    }
 }
 
 const addEventBtn = document.querySelector(".add-event"),
@@ -260,7 +289,7 @@ addEventFrom.addEventListener("input", (e) => {
     addEventFrom.value = addEventFrom.value.replace(/[^0-9:]/g, "");
     //Se oque for digitado for 2 caracteres
     if (addEventFrom.value.length === 2) {
-        //Adiciona uma barra
+        //Adiciona dois pontos
         addEventFrom.value += ":";
     }
     //Não deixa usuario digitar mais que 5 caracteres
@@ -281,7 +310,7 @@ addEventTo.addEventListener("input", (e) => {
     addEventTo.value = addEventTo.value.replace(/[^0-9:]/g, "");
     //Se oque for digitado for 2 caracteres
     if (addEventTo.value.length === 2) {
-        //Adiciona uma barra
+        //Adiciona dois pontos
         addEventTo.value += ":";
     }
     //Não deixa usuario digitar mais que 5 caracteres
@@ -360,31 +389,31 @@ function addListener() {
 function getActiveDay(date) {
     const day = new Date(year, month, date);
     const dayName = day.toString("").split(" ")[0];
+    
+    if (language === "pt-BR") {
 
-    //Converte os dias da semana pra pt-BR
-    if (dayName === "Sun") {
-        diaSemana = dias[0];
-    } else 
-    if (dayName === "Mon") {
-        diaSemana = dias[1];
-    } else 
-    if (dayName === "Tue") {
-        diaSemana = dias[2];
-    } else 
-    if (dayName === "Wed") {
-        diaSemana = dias[3];
-    } else 
-    if (dayName === "Thu") {
-        diaSemana = dias[4];
-    } else 
-    if (dayName === "Fri") {
-        diaSemana = dias[5];
-    } else 
-    if (dayName === "Sat") {
-        diaSemana = dias[6];
+    //Dias traduzidos para português
+    translateDays = {
+        Sun: "Dom",
+        Mon: "Seg",
+        Tue: "Ter",
+        Wed: "Qua",
+        Thu: "Qui",
+        Fri: "Sex",
+        Sat: "Sáb",
     }
-    eventDay.innerHTML = diaSemana.slice(0,3);
+
+    eventDay.innerHTML = translateDays[dayName];
     eventDate.innerHTML = date + " " + months[month] + " " + year;
+    
+} else if (language === "en-US") {
+    eventDay.innerHTML = dayName;
+    eventDate.innerHTML = date + " " + monthsUs[month] + " " + year;
+} else {
+    eventDay.innerHTML = dayName;
+    eventDate.innerHTML = date + " " + monthsUs[month] + " " + year;
+    }   
+
 }
 
 //Função para mostrar eventos daquele dia
@@ -414,13 +443,21 @@ function updateEvents(date) {
     });
 
     // Se nada for encontrado
-
-    if (events === "") {
-        events = `<div class="no-event">
-                <h3>Sem tarefas</h3>
-            </div>`;
-      }
-    eventsContainer.innerHTML = events;
+    if (language === "pt-BR") {
+        if (events === "") {
+            events = `<div class="no-event">
+                    <h3>Sem tarefas ou eventos</h3>
+                </div>`;
+        }
+        eventsContainer.innerHTML = events;
+    } else {
+        if (events === "") {
+            events = `<div class="no-event">
+                    <h3>No tasks or events</h3>
+                </div>`;
+        }
+        eventsContainer.innerHTML = events;
+    }
     //Salva eventos quando atualizar eventos for chamado
     saveEvents();
 }
@@ -437,7 +474,11 @@ addEventSubmit.addEventListener("click", () => {
         eventTimeFrom === "" || 
         eventTimeTo === ""
     ) {
-        alert("Por favor preencha todos os campos");
+        if (language === "pt-BR") {
+            alert("Por favor preencha todos os campos");
+        } else {
+            alert("Please fill all the fields");
+        }
     }
 
     const timeFromArr = eventTimeFrom.split(":");
@@ -451,7 +492,11 @@ addEventSubmit.addEventListener("click", () => {
         timeToArr[0] > 23 ||
         timeToArr[1] > 59
     ) {
-        alert("Formato de data inválido");
+        if (language === "pt-BR") {
+            alert("Formato de data inválido");
+        } else {
+            alert("Invalid date format");
+        }
         return;
     }
 
@@ -524,6 +569,7 @@ function convertTime(time) {
     if (timeMin === "" || timeMin === "00") {
         time = timeHour + " " + timeFormat;
     }
+
     return time;
 }
 
@@ -573,4 +619,45 @@ function getEvents() {
       return;
     }
     eventsArr.push(...JSON.parse(localStorage.getItem("events")));
-  }
+}
+
+
+//Traduções estáticas na página
+
+if (language === "pt-BR") {
+    //Form de criar evento
+    createEventTitle.innerHTML = "Adicionar evento"
+    addEventSubmit.innerHTML = "Criar evento"
+    //Placeholders
+    document.getElementsByName('event-name')[0].placeholder='Evento';
+    document.getElementsByName('event-time-from')[0].placeholder='De';
+    document.getElementsByName('event-time-to')[0].placeholder='Para';
+
+    //Dias da semana
+    Dom.innerHTML = "Dom"
+    Seg.innerHTML = "Seg"
+    Ter.innerHTML = "Ter"
+    Qua.innerHTML = "Qua"
+    Qui.innerHTML = "Qui"
+    Sex.innerHTML = "Sex"
+    Sab.innerHTML = "Sáb"
+
+} else {
+    //Create Event Form
+    createEventTitle.innerHTML = "Add event"
+    addEventSubmit.innerHTML = "Create event"
+    //Placeholders
+    document.getElementsByName('event-name')[0].placeholder='Event';
+    document.getElementsByName('event-time-from')[0].placeholder='From';
+    document.getElementsByName('event-time-to')[0].placeholder='To';
+
+    //Weekdays
+    Dom.innerHTML = "Sun"
+    Seg.innerHTML = "Mon"
+    Ter.innerHTML = "Tue"
+    Qua.innerHTML = "Wed"
+    Qui.innerHTML = "Thu"
+    Sex.innerHTML = "Fri"
+    Sab.innerHTML = "Sat"
+}
+
