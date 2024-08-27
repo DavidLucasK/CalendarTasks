@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 :root {
-    --primary-clr: #7b30d0;
+    --primary-clr: #7400B8;
 }
 
 * {
@@ -17,7 +17,7 @@ body {
     align-items: center;
     justify-content: center;
     animation: gradient 10s ease infinite;
-    background: linear-gradient(90deg, #190555, #340ea5, #7b30d0, #190555) no-repeat;
+    background: linear-gradient(90deg, #7400B8, #6930C3, #5E60CE, #7400B8) no-repeat;
     background-size: 200% 200%;
     overflow: hidden;
 }
